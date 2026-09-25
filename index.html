@@ -1,399 +1,16 @@
 <!DOCTYPE html>
-<html lang="hi">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Way2Laabh - Pankaj Bhardwaj</title>
-    <!-- Font Awesome Icons -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Pankaj Bhardwaj™ - Market Expert</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        :root {
-            --bg-color: #0d131a;
-            --card-bg: #141d26;
-            --accent-green: #00e676;
-            --text-main: #ffffff;
-            --text-sub: #94a3b8;
-            --border-color: #1e293b;
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-        }
-
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-main);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            padding: 16px;
-            overflow-x: hidden;
-        }
-
-        /* Entrance Animations Keyframes */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes pulseGlow {
-            0% {
-                box-shadow: 0 0 10px rgba(0, 230, 118, 0.3);
-            }
-            50% {
-                box-shadow: 0 0 25px rgba(0, 230, 118, 0.7);
-            }
-            100% {
-                box-shadow: 0 0 10px rgba(0, 230, 118, 0.3);
-            }
-        }
-
-        @keyframes modalZoom {
-            from {
-                opacity: 0;
-                transform: scale(0.85);
-            }
-            to {
-                opacity: 1;
-                transform: scale(1);
-            }
-        }
-
-        /* Mobile Card Container */
-        .card-container {
-            width: 100%;
-            max-width: 420px;
-            background-color: var(--bg-color);
-            border: 1px solid var(--border-color);
-            border-radius: 24px;
-            padding: 24px 20px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-            text-align: center;
-            animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-        }
-
-        /* Profile Image */
-        .profile-wrapper {
-            position: relative;
-            width: 100px;
-            height: 100px;
-            margin: 0 auto 16px;
-        }
-
-        .profile-img {
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 2px solid var(--accent-green);
-            animation: pulseGlow 3s infinite ease-in-out;
-        }
-
-        .verified-badge {
-            position: absolute;
-            bottom: 2px;
-            right: 2px;
-            background-color: var(--accent-green);
-            color: #000;
-            border-radius: 50%;
-            width: 22px;
-            height: 22px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 12px;
-            border: 2px solid var(--bg-color);
-        }
-
-        /* Typography */
-        h1 {
-            font-size: 20px;
-            font-weight: 700;
-            letter-spacing: 1px;
-            margin-bottom: 4px;
-            text-transform: uppercase;
-        }
-
-        .brand-subtitle {
-            color: var(--accent-green);
-            font-size: 13px;
-            font-weight: 600;
-            letter-spacing: 1.5px;
-            margin-bottom: 12px;
-            text-transform: uppercase;
-        }
-
-        .description {
-            color: var(--text-sub);
-            font-size: 13.5px;
-            line-height: 1.5;
-            margin-bottom: 24px;
-            padding: 0 8px;
-        }
-
-        /* High-Converting CTA Button with Pulse */
-        .cta-button {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            background-color: var(--accent-green);
-            color: #000000;
-            text-decoration: none;
-            padding: 14px 20px;
-            border-radius: 14px;
-            font-weight: 700;
-            font-size: 16px;
-            margin-bottom: 20px;
-            animation: pulseGlow 2s infinite ease-in-out;
-            transition: transform 0.2s ease, filter 0.2s ease;
-        }
-
-        .cta-button:hover {
-            transform: translateY(-2px);
-            filter: brightness(1.1);
-        }
-
-        .cta-button:active {
-            transform: scale(0.96);
-        }
-
-        .cta-button-text {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .cta-subtext {
-            font-size: 11px;
-            font-weight: 500;
-            opacity: 0.8;
-            margin-top: 2px;
-        }
-
-        /* Feature Cards with Staggered Fade-In */
-        .features-list {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            margin-bottom: 20px;
-        }
-
-        .feature-item {
-            background-color: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            padding: 14px;
-            display: flex;
-            align-items: center;
-            gap: 14px;
-            text-align: left;
-            opacity: 0;
-            animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-            transition: transform 0.2s ease, border-color 0.2s ease;
-        }
-
-        .feature-item:hover {
-            transform: translateX(4px);
-            border-color: rgba(0, 230, 118, 0.4);
-        }
-
-        /* Stagger Delays */
-        .feature-item:nth-child(1) { animation-delay: 0.2s; }
-        .feature-item:nth-child(2) { animation-delay: 0.35s; }
-        .feature-item:nth-child(3) { animation-delay: 0.5s; }
-
-        .feature-icon {
-            width: 40px;
-            height: 40px;
-            background-color: rgba(255, 255, 255, 0.05);
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 18px;
-            color: var(--accent-green);
-            flex-shrink: 0;
-        }
-
-        .feature-content h3 {
-            font-size: 14px;
-            font-weight: 600;
-            margin-bottom: 2px;
-        }
-
-        .feature-content p {
-            font-size: 12px;
-            color: var(--text-sub);
-        }
-
-        /* Secondary Action Buttons */
-        .action-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 10px;
-            margin-bottom: 20px;
-            opacity: 0;
-            animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-            animation-delay: 0.6s;
-        }
-
-        .sec-btn {
-            background-color: transparent;
-            border: 1px solid var(--border-color);
-            color: var(--accent-green);
-            padding: 10px;
-            border-radius: 10px;
-            font-size: 13px;
-            font-weight: 600;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            text-decoration: none;
-            transition: all 0.2s ease;
-        }
-
-        .sec-btn:active {
-            transform: scale(0.95);
-        }
-
-        .sec-btn-white {
-            color: var(--text-main);
-        }
-
-        /* Stats Counter Bar */
-        .stats-bar {
-            background-color: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            padding: 12px 8px;
-            display: flex;
-            justify-content: space-around;
-            margin-bottom: 20px;
-            opacity: 0;
-            animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-            animation-delay: 0.7s;
-        }
-
-        .stat-item {
-            text-align: center;
-        }
-
-        .stat-value {
-            font-size: 15px;
-            font-weight: 700;
-        }
-
-        .stat-label {
-            font-size: 10px;
-            color: var(--text-sub);
-            margin-top: 2px;
-            text-transform: uppercase;
-        }
-
-        /* Popup Legal Links Footer */
-        .legal-footer {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 8px 12px;
-            border-top: 1px solid var(--border-color);
-            padding-top: 16px;
-            opacity: 0;
-            animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-            animation-delay: 0.8s;
-        }
-
-        .legal-footer a {
-            color: var(--text-sub);
-            font-size: 11px;
-            text-decoration: none;
-            transition: color 0.2s;
-        }
-
-        .legal-footer a:hover {
-            color: var(--accent-green);
-        }
-
-        /* Modal Animated Styles */
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.85);
-            backdrop-filter: blur(4px);
-            z-index: 1000;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-        }
-
-        .modal-content {
-            background-color: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 16px;
-            max-width: 500px;
-            width: 100%;
-            max-height: 80vh;
-            overflow-y: auto;
-            padding: 20px;
-            position: relative;
-            text-align: left;
-            animation: modalZoom 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-        }
-
-        .modal-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 1px solid var(--border-color);
-            padding-bottom: 10px;
-            margin-bottom: 15px;
-        }
-
-        .modal-header h2 {
-            font-size: 16px;
-            color: var(--accent-green);
-        }
-
-        .close-btn {
-            background: none;
-            border: none;
-            color: var(--text-sub);
-            font-size: 20px;
-            cursor: pointer;
-            transition: color 0.2s;
-        }
-
-        .close-btn:hover {
-            color: #fff;
-        }
-
-        .modal-body {
-            font-size: 13px;
-            color: var(--text-sub);
-            line-height: 1.6;
-        }
-
-        .modal-body p {
-            margin-bottom: 10px;
-        }
-    </style>
+    <!-- Inter Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
 <!-- Meta Pixel Code -->
 <script>
 !function(f,b,e,v,n,t,s)
@@ -404,204 +21,279 @@ n.queue=[];t=b.createElement(e);t.async=!0;
 t.src=v;s=b.getElementsByTagName(e)[0];
 s.parentNode.insertBefore(t,s)}(window, document,'script',
 'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '482998591494917');
+fbq('init', '2894892230879725');
 fbq('track', 'PageView');
 </script>
 <noscript><img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=482998591494917&ev=PageView&noscript=1"
+src="https://www.facebook.com/tr?id=2894892230879725&ev=PageView&noscript=1"
 /></noscript>
 <!-- End Meta Pixel Code -->
     
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .btn-glow {
+            box-shadow: 0 4px 14px rgba(10, 102, 228, 0.35);
+            transition: all 0.2s ease;
+        }
+        .btn-glow:active {
+            transform: scale(0.98);
+        }
+        @keyframes pulse-ring {
+            0% { transform: scale(0.95); opacity: 0.8; }
+            50% { transform: scale(1.2); opacity: 1; }
+            100% { transform: scale(0.95); opacity: 0.8; }
+        }
+        .pulse-dot {
+            animation: pulse-ring 1.8s infinite ease-in-out;
+        }
+    </style>
 </head>
-<body>
+<body class="min-h-screen flex flex-col justify-between text-gray-800 antialiased selection:bg-blue-100">
 
-    <div class="card-container">
-        <!-- Profile Section -->
-        <div class="profile-wrapper">
-            <img src="pankaj.jpeg" alt="Pankaj Bhardwaj" class="profile-img">
-            <div class="verified-badge"><i class="fa-solid fa-check"></i></div>
-        </div>
-
-        <h1>Pankaj Bhardwaj</h1>
-        <div class="brand-subtitle">WAY2LAABH ™</div>
-
-        <p class="description">
-            Step into an exclusive ecosystem. Get daily premium insights, learning resources, and network with active professionals.
-        </p>
-
-        <!-- Main CTA (Anti-Fake Click + Pulsing Animation) -->
-        <a href="https://t.me/+tof_J_vMgGs5NWE1" target="_blank" class="cta-button">
-            <div class="cta-button-text">
-                <i class="fa-brands fa-telegram fa-lg"></i>
-                <span>Join Free Telegram Channel</span>
+    <!-- Compact Header -->
+    <header class="w-full bg-white border-b border-gray-100 py-2 px-3 sm:px-6 flex justify-between items-center shadow-xs sticky top-0 z-40">
+        <div class="flex items-center space-x-2">
+            <img src="pankaj.jpeg" 
+                 alt="Logo" 
+                 class="w-7 h-7 rounded-full object-cover border border-blue-500 shadow-xs"
+                 onerror="this.src='https://placehold.co/80x80/0a66e4/ffffff?text=PB';">
+            <div>
+                <span class="font-extrabold text-gray-900 text-xs sm:text-sm block leading-tight tracking-tight">Pankaj Bhardwaj ™</span>
+                <span class="text-[9px] text-blue-600 font-bold uppercase leading-none block">Official</span>
             </div>
-            <span class="cta-subtext">Clicking opens Telegram App</span>
+        </div>
+        
+        <a href="https://t.me/+tof_J_vMgGs5NWE1" target="_blank" class="inline-flex items-center px-3 py-1 bg-blue-50 hover:bg-blue-100 text-blue-600 font-bold text-[11px] rounded-full transition">
+            <i class="fa-brands fa-telegram text-xs mr-1 text-blue-500"></i> Join
         </a>
+    </header>
 
-        <!-- Features List -->
-        <div class="features-list">
-            <div class="feature-item">
-                <div class="feature-icon"><i class="fa-solid fa-fire"></i></div>
-                <div class="feature-content">
-                    <h3>Daily Premium Updates</h3>
-                    <p>Fresh, high-value content delivered every single day.</p>
+    <!-- Main Content Container -->
+    <main class="flex-grow flex items-center justify-center px-3 py-4 sm:py-6">
+        <div class="w-full max-w-[420px] bg-transparent flex flex-col items-center text-center space-y-3.5">
+
+            <!-- Online Badge -->
+            <div class="inline-flex items-center space-x-1.5 bg-emerald-50 text-emerald-700 text-[11px] font-bold px-3 py-1 rounded-full border border-emerald-200/80 shadow-xs">
+                <span class="w-2 h-2 bg-emerald-500 rounded-full pulse-dot"></span>
+                <span>5,947 Traders Online</span>
+            </div>
+
+            <!-- Profile Image & Title -->
+            <div class="flex flex-col items-center space-y-1.5">
+                <div class="relative">
+                    <div class="w-20 h-20 rounded-full p-0.5 bg-gradient-to-tr from-blue-500 to-indigo-600 shadow-sm">
+                        <img src="Gautam.jpeg" 
+                             alt="Pankaj Bhardwaj Profile" 
+                             class="w-full h-full object-cover rounded-full border border-white"
+                             onerror="this.src='https://placehold.co/200x200/1e293b/ffffff?text=Pankaj';">
+                    </div>
+                </div>
+
+                <div>
+                    <h1 class="text-xl font-black text-gray-900 tracking-tight uppercase leading-tight">Pankaj Bhardwaj ™</h1>
+                    <p class="text-blue-600 font-bold text-xs mt-0.5 flex items-center justify-center gap-1">
+                        <span>🏆</span> Pankaj Bhardwaj | India's No.1 Stock Market Channel
+                    </p>
+                </div>
+
+                <!-- Rating -->
+                <div class="flex flex-col items-center">
+                    <div class="flex text-amber-400 space-x-0.5 text-xs">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="text-[10px] font-semibold text-gray-500 mt-0.5">4.9/5 (2,340 Reviews)</p>
                 </div>
             </div>
 
-            <div class="feature-item">
-                <div class="feature-icon"><i class="fa-solid fa-book-open"></i></div>
-                <div class="feature-content">
-                    <h3>Exclusive Learning</h3>
-                    <p>Easy-to-digest resources to accelerate your growth.</p>
-                </div>
-            </div>
-
-            <div class="feature-item">
-                <div class="feature-icon"><i class="fa-solid fa-handshake"></i></div>
-                <div class="feature-content">
-                    <h3>Active Community</h3>
-                    <p>Network with thousands of active, driven members.</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- Secondary Actions -->
-        <div class="action-grid">
-            <a href="https://t.me/+tof_J_vMgGs5NWE1" target="_blank" class="sec-btn">
-                <i class="fa-solid fa-phone"></i> Open App
+            <!-- Primary CTA Button -->
+            <a href="https://t.me/+tof_J_vMgGs5NWE1" target="_blank" class="w-full py-3 px-4 bg-[#0a66e4] hover:bg-[#0855c4] active:bg-[#0747a6] text-white font-extrabold text-sm rounded-xl btn-glow flex items-center justify-center space-x-2 transition">
+                <span>Join Free Telegram Channel</span>
+                <span class="text-base">→</span>
             </a>
-            <button class="sec-btn sec-btn-white" onclick="copyLink()">
-                <i class="fa-regular fa-copy"></i> <span id="copyText">Copy Link</span>
-            </button>
-        </div>
 
-        <!-- Social Proof Stats -->
-        <div class="stats-bar">
-            <div class="stat-item">
-                <div class="stat-value">10K+</div>
-                <div class="stat-label">Members</div>
+            <!-- Compact Stats Grid -->
+            <div class="grid grid-cols-3 gap-2 w-full">
+                <div class="bg-white py-2 px-1 rounded-xl border border-gray-100 shadow-xs flex flex-col items-center justify-center">
+                    <span class="text-base font-black text-gray-900">50K+</span>
+                    <span class="text-[10px] font-medium text-gray-500">Members</span>
+                </div>
+                <div class="bg-white py-2 px-1 rounded-xl border border-gray-100 shadow-xs flex flex-col items-center justify-center">
+                    <span class="text-base font-black text-gray-900">5+</span>
+                    <span class="text-[10px] font-medium text-gray-500">Years</span>
+                </div>
+                <div class="bg-white py-2 px-1 rounded-xl border border-gray-100 shadow-xs flex flex-col items-center justify-center">
+                    <span class="text-base font-black text-gray-900">95%</span>
+                    <span class="text-[10px] font-medium text-gray-500">Accuracy</span>
+                </div>
             </div>
-            <div class="stat-item">
-                <div class="stat-value">4.9 ★</div>
-                <div class="stat-label">Rating</div>
+
+            <!-- Headline Section -->
+            <div class="space-y-0.5 pt-1">
+                <h2 class="text-base font-black text-gray-900 leading-snug">
+                    Get <span class="text-blue-600 uppercase">FREE</span> Daily Calls
+                </h2>
+                <p class="text-xs font-bold text-gray-700">
+                    for NIFTY, BANKNIFTY & SENSEX
+                </p>
+                <p class="text-[10px] text-gray-500 font-medium pt-0.5">
+                    Join thousands of traders getting daily market analysis
+                </p>
             </div>
-            <div class="stat-item">
-                <div class="stat-value">100%</div>
-                <div class="stat-label">Free Access</div>
+
+            <!-- Limited Offer Banner -->
+            <div class="w-full bg-amber-50/90 border border-amber-200/80 rounded-xl py-2 px-3 flex items-center justify-center text-amber-800 font-bold text-xs shadow-xs">
+                <span>🔥 Limited FREE Access Available</span>
+            </div>
+
+            <!-- Feature List -->
+            <div class="w-full space-y-2">
+                <div class="w-full bg-white p-2.5 rounded-xl border border-gray-100 shadow-xs flex items-center space-x-2.5 text-left">
+                    <span class="text-base">📊</span>
+                    <span class="font-bold text-gray-800 text-xs">Daily Nifty & BankNifty Levels</span>
+                </div>
+                <div class="w-full bg-white p-2.5 rounded-xl border border-gray-100 shadow-xs flex items-center space-x-2.5 text-left">
+                    <span class="text-base">🎓</span>
+                    <span class="font-bold text-gray-800 text-xs">Educational Market Analysis</span>
+                </div>
+                <div class="w-full bg-white p-2.5 rounded-xl border border-gray-100 shadow-xs flex items-center space-x-2.5 text-left">
+                    <span class="text-base">👥</span>
+                    <span class="font-bold text-gray-800 text-xs">50,000+ Subscribers Community</span>
+                </div>
+            </div>
+
+            <!-- Secondary CTA Button -->
+            <a href="https://t.me/+tof_J_vMgGs5NWE1" target="_blank" class="w-full py-3 px-4 bg-[#0a66e4] hover:bg-[#0855c4] active:bg-[#0747a6] text-white font-extrabold text-sm rounded-xl btn-glow flex items-center justify-center space-x-2 transition">
+                <span>Join Free Telegram Channel</span>
+                <span class="text-base">→</span>
+            </a>
+
+            <!-- Brief Inline Disclaimer -->
+            <p class="text-[10px] text-gray-400 leading-tight px-2 pt-1">
+                <strong class="font-semibold text-gray-500">Disclaimer:</strong>
+                This channel is for educational purposes only. Trading involves market risk.
+            </p>
+
+        </div>
+    </main>
+
+    <!-- Compact Footer Section -->
+    <footer class="w-full bg-white border-t border-gray-200 py-3 px-3 mt-4">
+        <div class="max-w-md mx-auto flex flex-col items-center space-y-2">
+            <!-- Navigation Links -->
+            <div class="flex flex-wrap justify-center gap-2.5 text-[11px] font-bold text-gray-600">
+                <button onclick="openModal('aboutModal')" class="hover:text-blue-600 active:text-blue-700 transition">About Us</button>
+                <span class="text-gray-300">•</span>
+                <button onclick="openModal('termsModal')" class="hover:text-blue-600 active:text-blue-700 transition">Terms</button>
+                <span class="text-gray-300">•</span>
+                <button onclick="openModal('disclaimerModal')" class="hover:text-blue-600 active:text-blue-700 transition">Disclaimer</button>
+                <span class="text-gray-300">•</span>
+                <button onclick="openModal('contactModal')" class="hover:text-blue-600 active:text-blue-700 transition">Contact Us</button>
+            </div>
+
+            <!-- Copyright -->
+            <div class="text-[10px] text-gray-400 text-center">
+                &copy; <span id="year"></span> Pankaj Bhardwaj | WAY2LAABH ™. All rights reserved.
             </div>
         </div>
+    </footer>
 
-        <!-- Modal Trigger Links Footer -->
-        <div class="legal-footer">
-            <a href="javascript:void(0)" onclick="openModal('aboutModal')">About Us</a> •
-            <a href="javascript:void(0)" onclick="openModal('termsModal')">Terms</a> •
-            <a href="javascript:void(0)" onclick="openModal('privacyModal')">Privacy</a> •
-            <a href="javascript:void(0)" onclick="openModal('disclaimerModal')">Disclaimer</a> •
-            <a href="javascript:void(0)" onclick="openModal('contactModal')">Contact Us</a>
-        </div>
-    </div>
-
-    <!-- POPUP MODALS -->
-    <!-- About Modal -->
-    <div id="aboutModal" class="modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2>About Us</h2>
-                <button class="close-btn" onclick="closeModal('aboutModal')">&times;</button>
+    <!-- MODALS FOR FOOTER LINKS -->
+    
+    <!-- About Us Modal -->
+    <div id="aboutModal" class="fixed inset-0 bg-black/60 backdrop-blur-xs z-50 hidden flex items-center justify-center p-3">
+        <div class="bg-white w-full max-w-sm rounded-2xl p-5 shadow-2xl relative max-h-[80vh] overflow-y-auto">
+            <button onclick="closeModal('aboutModal')" class="absolute top-3 right-3 text-gray-400 hover:text-gray-600 text-lg font-bold w-7 h-7 flex items-center justify-center rounded-full bg-gray-100">&times;</button>
+            <h3 class="text-base font-extrabold text-gray-900 mb-2 border-b border-gray-100 pb-2">About Us</h3>
+            <div class="text-xs text-gray-600 space-y-2 leading-relaxed">
+                <p>Welcome to Pankaj Bhardwaj | WAY2LAABH ™, one of India's premier online trading communities.</p>
+                <p>With 5+ years of stock market experience, Pankaj Bhardwaj shares technical research, intraday levels for NIFTY, BANKNIFTY & SENSEX, and market guidance.</p>
             </div>
-            <div class="modal-body">
-                <p>Welcome to <strong>Way2Laabh™</strong> managed by Pankaj Bhardwaj. We provide daily market insights, educational content, and a community space for learning and networking.</p>
-            </div>
+            <button onclick="closeModal('aboutModal')" class="mt-4 w-full py-2 bg-blue-600 text-white font-bold rounded-xl text-xs hover:bg-blue-700">Got it</button>
         </div>
     </div>
 
     <!-- Terms Modal -->
-    <div id="termsModal" class="modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2>Terms & Conditions</h2>
-                <button class="close-btn" onclick="closeModal('termsModal')">&times;</button>
+    <div id="termsModal" class="fixed inset-0 bg-black/60 backdrop-blur-xs z-50 hidden flex items-center justify-center p-3">
+        <div class="bg-white w-full max-w-sm rounded-2xl p-5 shadow-2xl relative max-h-[80vh] overflow-y-auto">
+            <button onclick="closeModal('termsModal')" class="absolute top-3 right-3 text-gray-400 hover:text-gray-600 text-lg font-bold w-7 h-7 flex items-center justify-center rounded-full bg-gray-100">&times;</button>
+            <h3 class="text-base font-extrabold text-gray-900 mb-2 border-b border-gray-100 pb-2">Terms & Conditions</h3>
+            <div class="text-xs text-gray-600 space-y-2 leading-relaxed">
+                <p><strong>1. Educational Content:</strong> All trade setups and commentary provided are strictly for educational purposes.</p>
+                <p><strong>2. No Guarantee:</strong> Past performance does not guarantee future results. Trading involves financial risks.</p>
+                <p><strong>3. Responsibility:</strong> Users are solely responsible for their investment decisions and capital.</p>
             </div>
-            <div class="modal-body">
-                <p>By accessing our channel or platform, you agree to our terms. All content shared is strictly for educational purposes.</p>
-            </div>
-        </div>
-    </div>
-
-    <!-- Privacy Modal -->
-    <div id="privacyModal" class="modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2>Privacy Policy</h2>
-                <button class="close-btn" onclick="closeModal('privacyModal')">&times;</button>
-            </div>
-            <div class="modal-body">
-                <p>We respect your privacy. We do not collect or store personal data without your explicit permission.</p>
-            </div>
+            <button onclick="closeModal('termsModal')" class="mt-4 w-full py-2 bg-blue-600 text-white font-bold rounded-xl text-xs hover:bg-blue-700">Accept</button>
         </div>
     </div>
 
     <!-- Disclaimer Modal -->
-    <div id="disclaimerModal" class="modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2>Disclaimer</h2>
-                <button class="close-btn" onclick="closeModal('disclaimerModal')">&times;</button>
+    <div id="disclaimerModal" class="fixed inset-0 bg-black/60 backdrop-blur-xs z-50 hidden flex items-center justify-center p-3">
+        <div class="bg-white w-full max-w-sm rounded-2xl p-5 shadow-2xl relative max-h-[80vh] overflow-y-auto">
+            <button onclick="closeModal('disclaimerModal')" class="absolute top-3 right-3 text-gray-400 hover:text-gray-600 text-lg font-bold w-7 h-7 flex items-center justify-center rounded-full bg-gray-100">&times;</button>
+            <h3 class="text-base font-extrabold text-gray-900 mb-2 border-b border-gray-100 pb-2">Disclaimer</h3>
+            <div class="text-xs text-gray-600 space-y-2 leading-relaxed">
+                <p><strong>Educational Purpose Only:</strong> We are not SEBI registered advisors. Trading in Options and Equities carries significant financial risk.</p>
+                <p>Please consult a certified financial advisor before placing real financial trades.</p>
             </div>
-            <div class="modal-body">
-                <p>We are not SEBI-registered advisors unless explicitly stated. All updates are for informational and educational purposes only. Investing/trading involves financial risk.</p>
-            </div>
+            <button onclick="closeModal('disclaimerModal')" class="mt-4 w-full py-2 bg-blue-600 text-white font-bold rounded-xl text-xs hover:bg-blue-700">I Understand</button>
         </div>
     </div>
 
-    <!-- Contact Modal -->
-    <div id="contactModal" class="modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2>Contact Us</h2>
-                <button class="close-btn" onclick="closeModal('contactModal')">&times;</button>
+    <!-- Contact Us Modal -->
+    <div id="contactModal" class="fixed inset-0 bg-black/60 backdrop-blur-xs z-50 hidden flex items-center justify-center p-3">
+        <div class="bg-white w-full max-w-sm rounded-2xl p-5 shadow-2xl relative max-h-[80vh] overflow-y-auto">
+            <button onclick="closeModal('contactModal')" class="absolute top-3 right-3 text-gray-400 hover:text-gray-600 text-lg font-bold w-7 h-7 flex items-center justify-center rounded-full bg-gray-100">&times;</button>
+            <h3 class="text-base font-extrabold text-gray-900 mb-2 border-b border-gray-100 pb-2">Contact Us</h3>
+            <div class="text-xs text-gray-600 space-y-2.5 leading-relaxed">
+                <p>Have questions? Reach out to our support team:</p>
+                <div class="bg-gray-50 p-2.5 rounded-xl border border-gray-200 space-y-1.5">
+                    <p class="flex items-center gap-2">
+                        <i class="fa-solid fa-envelope text-blue-600"></i>
+                        <span><strong>Email:</strong> support@pankajbhardwaj.com</span>
+                    </p>
+                    <p class="flex items-center gap-2">
+                        <i class="fa-brands fa-telegram text-blue-500"></i>
+                        <span><strong>Telegram:</strong> <a href="https://t.me/+tof_J_vMgGs5NWE1" target="_blank" class="text-blue-600 underline font-bold">Official Support</a></span>
+                    </p>
+                </div>
             </div>
-            <div class="modal-body">
-                <p>For support or queries, contact us via Email: <strong>support@way2laabh.com</strong> or directly via Telegram.</p>
-            </div>
+            <button onclick="closeModal('contactModal')" class="mt-4 w-full py-2 bg-blue-600 text-white font-bold rounded-xl text-xs hover:bg-blue-700">Close</button>
         </div>
     </div>
 
     <script>
-        // Modal Handlers
+        // Set dynamic year in footer
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Modal Handler Functions
         function openModal(id) {
-            document.getElementById(id).style.display = 'flex';
+            document.getElementById(id).classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
         }
 
         function closeModal(id) {
-            document.getElementById(id).style.display = 'none';
+            document.getElementById(id).classList.add('hidden');
+            document.body.style.overflow = 'auto';
         }
 
-        // Close modal when clicking outside box
+        // Close modal when clicking backdrop
         window.onclick = function(event) {
-            let modals = document.getElementsByClassName('modal');
-            for (let i = 0; i < modals.length; i++) {
-                if (event.target == modals[i]) {
-                    modals[i].style.display = "none";
+            const modals = ['aboutModal', 'termsModal', 'disclaimerModal', 'contactModal'];
+            modals.forEach(modalId => {
+                const modal = document.getElementById(modalId);
+                if (event.target === modal) {
+                    closeModal(modalId);
                 }
-            }
-        }
-
-        // Copy Link Handler
-        function copyLink() {
-            const el = document.createElement('textarea');
-            el.value = window.location.href;
-            document.body.appendChild(el);
-            el.select();
-            document.execCommand('copy');
-            document.body.removeChild(el);
-
-            const copyTextSpan = document.getElementById('copyText');
-            copyTextSpan.innerText = 'Copied!';
-            setTimeout(() => {
-                copyTextSpan.innerText = 'Copy Link';
-            }, 2000);
-        }
+            });
+        };
     </script>
 </body>
 </html>
