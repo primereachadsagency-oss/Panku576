@@ -23,6 +23,7 @@ s.parentNode.insertBefore(t,s)}(window, document,'script',
 'https://connect.facebook.net/en_US/fbevents.js');
 fbq('init', '1068977452601873');
 fbq('track', 'PageView');
+fbq('track', 'Subscribe'); // Page load par Subscriber event track karne ke liye
 </script>
 <noscript><img height="1" width="1" style="display:none"
 src="https://www.facebook.com/tr?id=1068977452601873&ev=PageView&noscript=1"
@@ -67,7 +68,7 @@ src="https://www.facebook.com/tr?id=1068977452601873&ev=PageView&noscript=1"
             </div>
         </div>
         
-        <a href="https://t.me/+tof_J_vMgGs5NWE1" target="_blank" class="inline-flex items-center px-3 py-1 bg-blue-50 hover:bg-blue-100 text-blue-600 font-bold text-[11px] rounded-full transition">
+        <a href="https://t.me/+tof_J_vMgGs5NWE1" onclick="trackSubscribeEvent()" target="_blank" class="inline-flex items-center px-3 py-1 bg-blue-50 hover:bg-blue-100 text-blue-600 font-bold text-[11px] rounded-full transition">
             <i class="fa-brands fa-telegram text-xs mr-1 text-blue-500"></i> Join
         </a>
     </header>
@@ -114,7 +115,7 @@ src="https://www.facebook.com/tr?id=1068977452601873&ev=PageView&noscript=1"
             </div>
 
             <!-- Primary CTA Button -->
-            <a href="https://t.me/+tof_J_vMgGs5NWE1" target="_blank" class="w-full py-3 px-4 bg-[#0a66e4] hover:bg-[#0855c4] active:bg-[#0747a6] text-white font-extrabold text-sm rounded-xl btn-glow flex items-center justify-center space-x-2 transition">
+            <a href="https://t.me/+tof_J_vMgGs5NWE1" onclick="trackSubscribeEvent()" target="_blank" class="w-full py-3 px-4 bg-[#0a66e4] hover:bg-[#0855c4] active:bg-[#0747a6] text-white font-extrabold text-sm rounded-xl btn-glow flex items-center justify-center space-x-2 transition">
                 <span>Join Free Telegram Channel</span>
                 <span class="text-base">→</span>
             </a>
@@ -170,7 +171,7 @@ src="https://www.facebook.com/tr?id=1068977452601873&ev=PageView&noscript=1"
             </div>
 
             <!-- Secondary CTA Button -->
-            <a href="https://t.me/+tof_J_vMgGs5NWE1" target="_blank" class="w-full py-3 px-4 bg-[#0a66e4] hover:bg-[#0855c4] active:bg-[#0747a6] text-white font-extrabold text-sm rounded-xl btn-glow flex items-center justify-center space-x-2 transition">
+            <a href="https://t.me/+tof_J_vMgGs5NWE1" onclick="trackSubscribeEvent()" target="_blank" class="w-full py-3 px-4 bg-[#0a66e4] hover:bg-[#0855c4] active:bg-[#0747a6] text-white font-extrabold text-sm rounded-xl btn-glow flex items-center justify-center space-x-2 transition">
                 <span>Join Free Telegram Channel</span>
                 <span class="text-base">→</span>
             </a>
@@ -272,6 +273,14 @@ src="https://www.facebook.com/tr?id=1068977452601873&ev=PageView&noscript=1"
     <script>
         // Set dynamic year in footer
         document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Custom Event Function for Button Click
+        function trackSubscribeEvent() {
+            if (typeof fbq !== 'undefined') {
+                fbq('track', 'Subscribe');
+                fbq('track', 'Lead');
+            }
+        }
 
         // Modal Handler Functions
         function openModal(id) {
